@@ -1,0 +1,16 @@
+.header {
+  grid-area: header;
+}
+
+.main {
+  grid-area: main;
+}
+
+.app-container {
+  display: grid;
+  grid-template-columns: 440px auto 440px;
+  grid-template-rows: 10% 90%;
+  grid-template-areas:
+    "header header header"
+    ". main .";
+}

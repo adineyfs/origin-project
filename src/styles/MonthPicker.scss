@@ -1,0 +1,39 @@
+$myColor: red;
+
+// .monthly-payment-container {
+//   display: flex;
+//   justify-content: space-evenly;
+//   background: #ffffff;
+//   border: 1px solid #e9eef2;
+//   box-sizing: border-box;
+//   border-radius: 4px;
+//   height: 56px;
+//   width: 192px;
+// }
+
+.right-arrow-button {
+  background: #8a9ca9;
+  grid-area: right-arrow-button;
+}
+
+.left-arrow-button {
+  background: #8a9ca9;
+  grid-area: left-arrow-button;
+}
+
+.month-label {
+  grid-area: month-label;
+}
+
+.year-label {
+  grid-area: year-label;
+}
+
+.monthly-payment-container {
+  display: grid;
+  grid-template-columns: 58px auto 58px;
+  grid-template-rows: 50% 50%;
+  grid-template-areas:
+    "left-arrow-button month-label right-arrow-button"
+    "left-arrow-button year-label right-arrow-button";
+}
