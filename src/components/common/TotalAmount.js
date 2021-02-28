@@ -1,5 +1,9 @@
 import React from "react";
-
-const TotalAmount = () => <input type="text"></input>;
+import "../../styles/TotalAmount.scss";
+const TotalAmount = () => (
+  <div className="total-amount">
+    <input type="text"></input>
+  </div>
+);
 
 export default TotalAmount;
