@@ -1,21 +1,17 @@
 html,
 body {
   height: 100%;
+  background: #f5f7fc;
 }
 
-.header {
-  grid-area: header;
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap");
+
+.app {
+  min-width: 560px;
 }
 
-.main {
-  grid-area: main;
-}
-
-.app-container {
-  display: grid;
-  grid-template-columns: 440px auto 440px;
-  grid-template-rows: 10% 90%;
-  grid-template-areas:
-    "header header header"
-    ". main .";
+.app__header-logo {
+  padding: 1rem;
+  background: #ffffff;
 }

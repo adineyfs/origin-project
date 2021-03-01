@@ -1,6 +1,10 @@
 .reusable-logo {
-  height: 100%;
-  width: 100%;
-  border-radius: 8px;
-  border: 1px solid black;
+  height: 100px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.reusable-logo__img {
+  height: auto;
+  width: 4rem;
 }

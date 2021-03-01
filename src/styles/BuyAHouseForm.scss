@@ -1,8 +1,31 @@
-%extras {
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+%font-labels {
+  font-family: Work Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+%font-logo-title {
+  font-family: Rubik;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 29px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+%font-logo-subtitle {
+  font-family: Work Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
 }
 
 .buy-a-house-form {
@@ -13,51 +36,112 @@
   box-shadow: 0px 16px 32px rgba(30, 42, 50, 0.08);
   border-radius: 8px;
   height: 511px;
-  width: 100%;
+  padding: 2rem;
 }
 
 .buy-a-house-form__reusable-logo {
-  //@extend %extras;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 2;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
 }
 
 .buy-a-house-form__total-amount {
-  //@extend %extras;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  @extend %font-labels;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  width: 95%;
+  text-align: initial;
 }
 
 .buy-a-house-form__month-picker {
-  //@extend %extras;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  @extend %font-labels;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  width: 95%;
+  justify-self: flex-end;
+  text-align: initial;
 }
 
 .buy-a-house-form__monthly-amount {
-  //@extend %extras;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 3;
-  grid-row-end: 4;
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
 }
 
 .buy-a-house-form__button-area {
-  //@extend %extras;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  grid-row-start: 4;
-  grid-row-end: 5;
+  grid-column: 1 / 3;
+  grid-row: 4 / 5;
+  justify-self: center;
+  align-self: flex-end;
 }
 
 .buy-a-house-form__confirm-button {
-  height: 100%;
-  width: 100%;
+  height: 56px;
+  width: 320px;
   border-radius: 32px;
+}
+
+.buy-a-house-form__logo-first-label {
+  @extend %font-logo-title;
+  color: #1e2a32;
+  margin: 0;
+}
+
+.buy-a-house-form__logo-second-label {
+  @extend %font-logo-subtitle;
+  color: #708797;
+}
+
+.buy-a-house-form__logo-title {
+  padding: 0.2rem 1rem;
+  text-align: initial;
+}
+
+.buy-a-house-form__confirm-button {
+  border-radius: 32px;
+  font-family: Work Sans;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  background-color: #0079ff;
+}
+.buy-a-house-form__confirm-button:hover {
+  background-color: #1b3785;
+}
+@media all and (max-width: 600px) {
+  .buy-a-house-form {
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 15% 20% 20% 30% 15%;
+    height: 586px;
+  }
+
+  .buy-a-house-form__reusable-logo {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+
+  .buy-a-house-form__total-amount {
+    grid-column: 1 / 3;
+    grid-row: 2 / 3;
+    width: 100%;
+  }
+
+  .buy-a-house-form__month-picker {
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+    width: 100%;
+  }
+
+  .buy-a-house-form__monthly-amount {
+    grid-column: 1 / 3;
+    grid-row: 4 / 5;
+  }
+
+  .buy-a-house-form__button-area {
+    grid-column: 1 / 3;
+    grid-row: 5 / 6;
+  }
+
+  .buy-a-house-form__confirm-button {
+    width: 360px;
+  }
 }

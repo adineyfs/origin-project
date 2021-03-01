@@ -1,0 +1,33 @@
+%font-title {
+  font-family: Work Sans;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+.main-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-page__title {
+  @extend %font-title;
+  padding: 2rem 0;
+  color: #1b31a8;
+}
+
+.main-page__form {
+  width: 560px;
+  margin-bottom: 5rem;
+}
+
+@media all and (max-width: 600px) {
+  .main-page__form {
+    width: 560px;
+    margin-bottom: 0;
+  }
+}
