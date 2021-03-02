@@ -43,3 +43,38 @@ export function extractMonthFromDate(date) {
   }
   return month;
 }
+
+export function compareDatesWithoutTimezone(dateA, dateB) {
+  return new Date(dateA.toDateString()) < new Date(dateB.toDateString());
+}
+
+export function calculateRemainingMonths(dateA, dateB) {
+  const currentDateYear = dateA.getFullYear();
+  const currentDateMonth = dateA.getMonth();
+  const selectedDateYear = dateB.getFullYear();
+  const selectedDateMonth = dateB.getMonth();
+  const yearsDifference = selectedDateYear - currentDateYear;
+  const monthsDifference = selectedDateMonth - currentDateMonth;
+  return yearsDifference * 12 + monthsDifference;
+}
+
+export function calculateMonthlyPayment(remainingMonths, totalAmount) {
+  if (remainingMonths === 0 || (remainingMonths > 0 && totalAmount === 0)) {
+    return parseFloat(totalAmount).toFixed();
+  } else if (remainingMonths > 0 && totalAmount > 0) {
+    return parseFloat(totalAmount / remainingMonths).toFixed();
+  }
+}
+
+export function calculateNumberOfDeposits(remainingMonths, totalAmount) {
+  if (totalAmount === 0) {
+    return "0 monthly deposits";
+  }
+  if (remainingMonths === 0 && totalAmount > 0) {
+    return "1 instant deposit";
+  } else if (remainingMonths > 0 && totalAmount > 0) {
+    return remainingMonths > 1
+      ? `${remainingMonths} monthly deposits`
+      : `${remainingMonths} monthly deposit`;
+  }
+}
