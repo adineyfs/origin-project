@@ -15,6 +15,8 @@ class BuyAHouseForm extends Component {
     window.alert("uou");
   };
 
+  handleMonthChange = () => {};
+
   render() {
     return (
       <form onSubmit={this.onConfirm}>
@@ -37,7 +39,7 @@ class BuyAHouseForm extends Component {
           </div>
           <div className="buy-a-house-form__month-picker">
             <span>Reach goal by:</span>
-            <MonthPicker />
+            <MonthPicker onChange={this.handleMonthChange} />
           </div>
           <div className="buy-a-house-form__monthly-amount">
             <MonthlyAmount />
