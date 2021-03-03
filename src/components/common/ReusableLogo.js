@@ -4,7 +4,7 @@ import "../../styles/ReusableLogo.scss";
 
 const ReusableLogo = ({ imagePath, alt, className, children }) => {
   return (
-    <div className={className ? className : "reusable-logo"}>
+    <div className={className}>
       <img src={imagePath} alt={alt} className="reusable-logo__img" />
       {children}
     </div>
@@ -16,6 +16,13 @@ ReusableLogo.propTypes = {
   alt: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.node,
+};
+
+ReusableLogo.defaultProps = {
+  imagePath: "",
+  alt: "Logo",
+  className: "reusable-logo",
+  children: <div></div>,
 };
 
 export default ReusableLogo;
