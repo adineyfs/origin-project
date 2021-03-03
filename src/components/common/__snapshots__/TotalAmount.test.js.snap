@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Total Amount Component Should render with default props 1`] = `
+<div
+  className="total-amount"
+>
+  <div
+    className="total-amount__currency-symbol-area"
+  >
+    $
+  </div>
+  <CurrencyInput
+    allowNegative={false}
+    autoFocus={false}
+    className="total-amount__input"
+    decimalSeparator="."
+    inputType="text"
+    onChange={[Function]}
+    onChangeEvent={[Function]}
+    precision="0"
+    prefix=""
+    selectAllOnFocus={false}
+    suffix=""
+    thousandSeparator=","
+    value={0}
+  />
+</div>
+`;

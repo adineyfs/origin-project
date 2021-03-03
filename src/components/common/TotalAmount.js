@@ -6,7 +6,7 @@ import "../../styles/TotalAmount.scss";
 const TotalAmount = ({ amount, currencySymbol, onChange, className }) => {
   currencySymbol = currencySymbol ? currencySymbol : "$";
   return (
-    <div className={className ? className : "total-amount"}>
+    <div className={className}>
       <div className="total-amount__currency-symbol-area">{currencySymbol}</div>
 
       <CurrencyInput
@@ -24,6 +24,13 @@ TotalAmount.propTypes = {
   className: PropTypes.string,
   onChange: PropTypes.func,
   amount: PropTypes.number,
+};
+
+TotalAmount.defaultProps = {
+  currencySymbol: "$",
+  className: "total-amount",
+  onChange: () => {},
+  amount: 0,
 };
 
 export default TotalAmount;

@@ -11,37 +11,41 @@ const MonthPicker = ({
   errorMessage,
   year,
   month,
-}) => (
-  <>
-    <div
-      className={`month-picker ${hasError ? "month-picker__month-error" : ""}`}
-    >
+}) => {
+  return (
+    <>
       <div
-        className="month-picker__arrow-button month-picker__arrow-button--left"
-        onClick={onBackClick}
+        className={`month-picker ${
+          hasError ? "month-picker__month-error" : ""
+        }`}
       >
-        <ArrowBackIosIcon color="disabled" />
+        <div
+          className="month-picker__arrow-button month-picker__arrow-button--left"
+          onClick={onBackClick}
+        >
+          <ArrowBackIosIcon color="disabled" />
+        </div>
+        <div className="month-picker__month-label">{month}</div>
+        <div className="month-picker__year-label">{year}</div>
+        <div
+          className="month-picker__arrow-button month-picker__arrow-button--right"
+          onClick={onForwardClick}
+        >
+          <ArrowForwardIosIcon color="disabled" />
+        </div>
       </div>
-      <div className="month-picker__month-label">{month}</div>
-      <div className="month-picker__year-label">{year}</div>
-      <div
-        className="month-picker__arrow-button month-picker__arrow-button--right"
-        onClick={onForwardClick}
+      <span
+        className={
+          hasError
+            ? "month-picker__month-error-text"
+            : "month-picker__month-error-text-clear"
+        }
       >
-        <ArrowForwardIosIcon color="disabled" />
-      </div>
-    </div>
-    <span
-      className={
-        hasError
-          ? "month-picker__month-error-text"
-          : "month-picker__month-error-text-clear"
-      }
-    >
-      {errorMessage || "Only future dates"}
-    </span>
-  </>
-);
+        {errorMessage || "Only future dates"}
+      </span>
+    </>
+  );
+};
 
 MonthPicker.propTypes = {
   errorMessage: PropTypes.string,

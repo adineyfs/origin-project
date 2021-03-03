@@ -21,8 +21,8 @@ class BuyAHouseForm extends Component {
     remainingMonths: 0,
   };
 
-  onConfirm = () => {
-    window.alert("uou");
+  onConfirm = (event) => {
+    event.preventDefault();
   };
 
   calculateRemainingMonths = () => {
@@ -82,15 +82,23 @@ class BuyAHouseForm extends Component {
     });
   };
 
+  handleKeyDown = (event) => {
+    event.key == "ArrowRight" && this.handleForwardClick();
+    event.key == "ArrowLeft" && this.handleBackClick();
+  };
+
   handleAmountChange = (floatvalue) => {
     this.setState({ totalAmount: floatvalue });
   };
 
   render() {
-    console.log(this.state.remainingMonths);
     return (
       <form onSubmit={this.onConfirm}>
-        <div className="buy-a-house-form">
+        <div
+          className="buy-a-house-form"
+          onKeyDown={this.handleKeyDown}
+          tabIndex="0"
+        >
           <div className="buy-a-house-form__reusable-logo">
             <ReusableLogo imagePath={HouseLogo}>
               <div className="buy-a-house-form__logo-title">
