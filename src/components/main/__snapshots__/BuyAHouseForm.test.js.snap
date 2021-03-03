@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Buy a House Form Renders with default state 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="buy-a-house-form"
+    onKeyDown={[Function]}
+    tabIndex="0"
+  >
+    <div
+      className="buy-a-house-form__reusable-logo"
+    >
+      <ReusableLogo
+        imagePath="houseLogo.png"
+      >
+        <div
+          className="buy-a-house-form__logo-title"
+        >
+          <p
+            className="buy-a-house-form__logo-first-label"
+          >
+            Buy a House
+          </p>
+          <p
+            className="buy-a-house-form__logo-second-label"
+          >
+            Saving Goal
+          </p>
+        </div>
+      </ReusableLogo>
+    </div>
+    <div
+      className="buy-a-house-form__total-amount"
+    >
+      <span>
+        Total amount:
+      </span>
+      <TotalAmount
+        amount={0}
+        className="total-amount"
+        currencySymbol="$"
+        onChange={[Function]}
+      />
+    </div>
+    <div
+      className="buy-a-house-form__month-picker"
+    >
+      <span>
+        Reach goal by:
+      </span>
+      <MonthPicker
+        errorMessage="Only future dates"
+        hasError={false}
+        month="March"
+        onBackClick={[Function]}
+        onForwardClick={[Function]}
+        year={2021}
+      />
+    </div>
+    <div
+      className="buy-a-house-form__monthly-amount"
+    >
+      <MonthlyAmount
+        month="March"
+        remainingMonths={0}
+        totalAmount={0}
+        year={2021}
+      />
+    </div>
+    <div
+      className="buy-a-house-form__button-area"
+    >
+      <button
+        className="btn btn-primary buy-a-house-form__confirm-button"
+        disabled={false}
+        type="submit"
+      >
+        Confirm
+      </button>
+    </div>
+  </div>
+</form>
+`;

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Month Picker Should render with default props 1`] = `
+<Fragment>
+  <div
+    className="month-picker "
+  >
+    <div
+      className="month-picker__arrow-button month-picker__arrow-button--left"
+      onClick={[Function]}
+    >
+      <Memo(ForwardRef(ArrowBackIosIcon))
+        color="disabled"
+      />
+    </div>
+    <div
+      className="month-picker__month-label"
+    />
+    <div
+      className="month-picker__year-label"
+    >
+      0
+    </div>
+    <div
+      className="month-picker__arrow-button month-picker__arrow-button--right"
+      onClick={[Function]}
+    >
+      <Memo(ForwardRef(ArrowForwardIosIcon))
+        color="disabled"
+      />
+    </div>
+  </div>
+  <span
+    className="month-picker__month-error-text-clear"
+  >
+    Only future dates
+  </span>
+</Fragment>
+`;

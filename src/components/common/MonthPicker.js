@@ -41,7 +41,7 @@ const MonthPicker = ({
             : "month-picker__month-error-text-clear"
         }
       >
-        {errorMessage || "Only future dates"}
+        {errorMessage}
       </span>
     </>
   );
@@ -54,6 +54,15 @@ MonthPicker.propTypes = {
   hasError: PropTypes.bool,
   year: PropTypes.number,
   month: PropTypes.string,
+};
+
+MonthPicker.defaultProps = {
+  errorMessage: "Only future dates",
+  onForwardClick: () => {},
+  onBackClick: () => {},
+  hasError: false,
+  year: 0,
+  month: "",
 };
 
 export default MonthPicker;
