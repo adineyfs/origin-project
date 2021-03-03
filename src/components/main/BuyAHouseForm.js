@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import TotalAmount from "../common/TotalAmount";
 import MonthlyAmount from "../common/MonthlyAmount";
 import MonthPicker from "../common/MonthPicker";
@@ -11,24 +11,22 @@ import {
   calculateRemainingMonths,
 } from "../../utils";
 
-class BuyAHouseForm extends Component {
-  state = {
-    totalAmount: 0,
-    selectedDate: new Date(),
-    month: extractMonthFromDate(new Date()),
-    year: new Date().getFullYear(),
-    monthPickerError: false,
-    remainingMonths: 0,
-  };
+const BuyAHouseForm = () => {
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [month, setMonth] = useState(extractMonthFromDate(new Date()));
+  const [year, setYear] = useState(new Date().getFullYear());
+  const [monthPickerError, setMonthPickerError] = useState(false);
+  const [remainingMonths, setRemainingMonths] = useState(0);
 
-  onConfirm = (event) => {
+  const onConfirm = (event) => {
     event.preventDefault();
   };
 
-  handleBackClick = () => {
+  const handleBackClick = () => {
     const DECEMBER = 11;
     const JANUARY = 0;
-    let newSelectedDate = new Date(this.state.selectedDate.getTime());
+    let newSelectedDate = new Date(selectedDate.getTime());
     const selectedMonth =
       newSelectedDate.getMonth() === JANUARY
         ? DECEMBER
@@ -38,22 +36,20 @@ class BuyAHouseForm extends Component {
     }
     newSelectedDate.setMonth(selectedMonth);
     if (compareDatesWithoutTimezone(newSelectedDate, new Date())) {
-      this.setState({ monthPickerError: true });
+      setMonthPickerError(true);
     } else {
-      this.setState({
-        selectedDate: newSelectedDate,
-        month: extractMonthFromDate(newSelectedDate),
-        year: newSelectedDate.getFullYear(),
-        monthPickerError: false,
-        remainingMonths: calculateRemainingMonths(new Date(), newSelectedDate),
-      });
+      setSelectedDate(newSelectedDate);
+      setMonth(extractMonthFromDate(newSelectedDate));
+      setYear(newSelectedDate.getFullYear());
+      setMonthPickerError(false);
+      setRemainingMonths(calculateRemainingMonths(new Date(), newSelectedDate));
     }
   };
 
-  handleForwardClick = () => {
+  const handleForwardClick = () => {
     const DECEMBER = 11;
     const JANUARY = 0;
-    let newSelectedDate = new Date(this.state.selectedDate.getTime());
+    let newSelectedDate = new Date(selectedDate.getTime());
     const selectedMonth =
       newSelectedDate.getMonth() === DECEMBER
         ? JANUARY
@@ -62,82 +58,67 @@ class BuyAHouseForm extends Component {
       newSelectedDate.setYear(newSelectedDate.getFullYear() + 1);
     }
     newSelectedDate.setMonth(selectedMonth);
-    this.setState({
-      selectedDate: newSelectedDate,
-      month: extractMonthFromDate(newSelectedDate),
-      year: newSelectedDate.getFullYear(),
-      monthPickerError: false,
-      remainingMonths: calculateRemainingMonths(new Date(), newSelectedDate),
-    });
+    setSelectedDate(newSelectedDate);
+    setMonth(extractMonthFromDate(newSelectedDate));
+    setYear(newSelectedDate.getFullYear());
+    setMonthPickerError(false);
+    setRemainingMonths(calculateRemainingMonths(new Date(), newSelectedDate));
   };
 
-  handleKeyDown = (event) => {
-    event.key == "ArrowRight" && this.handleForwardClick();
-    event.key == "ArrowLeft" && this.handleBackClick();
+  const handleKeyDown = (event) => {
+    event.key == "ArrowRight" && handleForwardClick();
+    event.key == "ArrowLeft" && handleBackClick();
   };
 
-  handleAmountChange = (floatvalue) => {
-    this.setState({ totalAmount: floatvalue });
+  const handleAmountChange = (floatvalue) => {
+    setTotalAmount(floatvalue);
   };
 
-  render() {
-    return (
-      <form onSubmit={this.onConfirm}>
-        <div
-          className="buy-a-house-form"
-          onKeyDown={this.handleKeyDown}
-          tabIndex="0"
-        >
-          <div className="buy-a-house-form__reusable-logo">
-            <ReusableLogo imagePath={HouseLogo}>
-              <div className="buy-a-house-form__logo-title">
-                <p className="buy-a-house-form__logo-first-label">
-                  Buy a House
-                </p>
-                <p className="buy-a-house-form__logo-second-label">
-                  Saving Goal
-                </p>
-              </div>
-            </ReusableLogo>
-          </div>
-          <div className="buy-a-house-form__total-amount">
-            <span>Total amount:</span>
-            <TotalAmount
-              amount={this.state.totalAmount}
-              onChange={this.handleAmountChange}
-            />
-          </div>
-          <div className="buy-a-house-form__month-picker">
-            <span>Reach goal by:</span>
-            <MonthPicker
-              onForwardClick={this.handleForwardClick}
-              onBackClick={this.handleBackClick}
-              year={this.state.year}
-              month={this.state.month}
-              hasError={this.state.monthPickerError}
-            />
-          </div>
-          <div className="buy-a-house-form__monthly-amount">
-            <MonthlyAmount
-              remainingMonths={this.state.remainingMonths}
-              totalAmount={this.state.totalAmount}
-              month={this.state.month}
-              year={this.state.year}
-            />
-          </div>
-          <div className="buy-a-house-form__button-area">
-            <button
-              type="submit"
-              disabled={false}
-              className="btn btn-primary buy-a-house-form__confirm-button"
-            >
-              Confirm
-            </button>
-          </div>
+  return (
+    <form onSubmit={onConfirm}>
+      <div className="buy-a-house-form" onKeyDown={handleKeyDown} tabIndex="0">
+        <div className="buy-a-house-form__reusable-logo">
+          <ReusableLogo imagePath={HouseLogo}>
+            <div className="buy-a-house-form__logo-title">
+              <p className="buy-a-house-form__logo-first-label">Buy a House</p>
+              <p className="buy-a-house-form__logo-second-label">Saving Goal</p>
+            </div>
+          </ReusableLogo>
         </div>
-      </form>
-    );
-  }
-}
+        <div className="buy-a-house-form__total-amount">
+          <span>Total amount:</span>
+          <TotalAmount amount={totalAmount} onChange={handleAmountChange} />
+        </div>
+        <div className="buy-a-house-form__month-picker">
+          <span>Reach goal by:</span>
+          <MonthPicker
+            onForwardClick={handleForwardClick}
+            onBackClick={handleBackClick}
+            year={year}
+            month={month}
+            hasError={monthPickerError}
+          />
+        </div>
+        <div className="buy-a-house-form__monthly-amount">
+          <MonthlyAmount
+            remainingMonths={remainingMonths}
+            totalAmount={totalAmount}
+            month={month}
+            year={year}
+          />
+        </div>
+        <div className="buy-a-house-form__button-area">
+          <button
+            type="submit"
+            disabled={false}
+            className="btn btn-primary buy-a-house-form__confirm-button"
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+    </form>
+  );
+};
 
 export default BuyAHouseForm;
