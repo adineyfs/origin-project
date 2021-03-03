@@ -12,7 +12,7 @@ const TotalAmount = ({ amount, currencySymbol, onChange, className }) => {
       <CurrencyInput
         className="total-amount__input"
         value={amount}
-        onChangeEvent={onChange}
+        onChangeEvent={(event, maskedvalue, floatvalue) => onChange(floatvalue)}
         precision="0"
       />
     </div>

@@ -48,33 +48,29 @@ export function compareDatesWithoutTimezone(dateA, dateB) {
   return new Date(dateA.toDateString()) < new Date(dateB.toDateString());
 }
 
-export function calculateRemainingMonths(dateA, dateB) {
-  const currentDateYear = dateA.getFullYear();
-  const currentDateMonth = dateA.getMonth();
-  const selectedDateYear = dateB.getFullYear();
-  const selectedDateMonth = dateB.getMonth();
-  const yearsDifference = selectedDateYear - currentDateYear;
-  const monthsDifference = selectedDateMonth - currentDateMonth;
+export function calculateRemainingMonths(currentDate, futureDate) {
+  const yearsDifference = futureDate.getFullYear() - currentDate.getFullYear();
+  const monthsDifference = futureDate.getMonth() - currentDate.getMonth();
   return yearsDifference * 12 + monthsDifference;
 }
 
-export function calculateMonthlyPayment(remainingMonths, totalAmount) {
-  if (remainingMonths === 0 || (remainingMonths > 0 && totalAmount === 0)) {
+export function calculateMonthlyPayment(numberOfMonths, totalAmount) {
+  if (numberOfMonths === 0 || (numberOfMonths > 0 && totalAmount === 0)) {
     return parseFloat(totalAmount).toFixed();
-  } else if (remainingMonths > 0 && totalAmount > 0) {
-    return parseFloat(totalAmount / remainingMonths).toFixed();
+  } else if (numberOfMonths > 0 && totalAmount > 0) {
+    return parseFloat(totalAmount / numberOfMonths).toFixed();
   }
 }
 
-export function calculateNumberOfDeposits(remainingMonths, totalAmount) {
+export function calculateNumberOfDeposits(numberOfMonths, totalAmount) {
   if (totalAmount === 0) {
     return "0 monthly deposits";
   }
-  if (remainingMonths === 0 && totalAmount > 0) {
+  if (numberOfMonths === 0 && totalAmount > 0) {
     return "1 instant deposit";
-  } else if (remainingMonths > 0 && totalAmount > 0) {
-    return remainingMonths > 1
-      ? `${remainingMonths} monthly deposits`
-      : `${remainingMonths} monthly deposit`;
+  } else if (numberOfMonths > 0 && totalAmount > 0) {
+    return numberOfMonths > 1
+      ? `${numberOfMonths} monthly deposits`
+      : `${numberOfMonths} monthly deposit`;
   }
 }

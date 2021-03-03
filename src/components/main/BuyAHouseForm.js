@@ -39,24 +39,24 @@ class BuyAHouseForm extends Component {
   handleBackClick = () => {
     const DECEMBER = 11;
     const JANUARY = 0;
-    let newCurrentDate = new Date(this.state.selectedDate.getTime());
-    const previousMonth =
-      newCurrentDate.getMonth() === JANUARY
+    let newSelectedDate = new Date(this.state.selectedDate.getTime());
+    const selectedMonth =
+      newSelectedDate.getMonth() === JANUARY
         ? DECEMBER
-        : newCurrentDate.getMonth() - 1;
-    if (previousMonth === DECEMBER) {
-      newCurrentDate.setYear(newCurrentDate.getFullYear() - 1);
+        : newSelectedDate.getMonth() - 1;
+    if (selectedMonth === DECEMBER) {
+      newSelectedDate.setYear(newSelectedDate.getFullYear() - 1);
     }
-    newCurrentDate.setMonth(previousMonth);
-    if (compareDatesWithoutTimezone(newCurrentDate, new Date())) {
+    newSelectedDate.setMonth(selectedMonth);
+    if (compareDatesWithoutTimezone(newSelectedDate, new Date())) {
       this.setState({ monthPickerError: true });
     } else {
       this.setState({
-        selectedDate: newCurrentDate,
-        month: extractMonthFromDate(newCurrentDate),
-        year: newCurrentDate.getFullYear(),
+        selectedDate: newSelectedDate,
+        month: extractMonthFromDate(newSelectedDate),
+        year: newSelectedDate.getFullYear(),
         monthPickerError: false,
-        remainingMonths: calculateRemainingMonths(new Date(), newCurrentDate),
+        remainingMonths: calculateRemainingMonths(new Date(), newSelectedDate),
       });
     }
   };
@@ -64,25 +64,25 @@ class BuyAHouseForm extends Component {
   handleForwardClick = () => {
     const DECEMBER = 11;
     const JANUARY = 0;
-    let newCurrentDate = new Date(this.state.selectedDate.getTime());
-    const nextMonth =
-      newCurrentDate.getMonth() === DECEMBER
+    let newSelectedDate = new Date(this.state.selectedDate.getTime());
+    const selectedMonth =
+      newSelectedDate.getMonth() === DECEMBER
         ? JANUARY
-        : newCurrentDate.getMonth() + 1;
-    if (nextMonth === JANUARY) {
-      newCurrentDate.setYear(newCurrentDate.getFullYear() + 1);
+        : newSelectedDate.getMonth() + 1;
+    if (selectedMonth === JANUARY) {
+      newSelectedDate.setYear(newSelectedDate.getFullYear() + 1);
     }
-    newCurrentDate.setMonth(nextMonth);
+    newSelectedDate.setMonth(selectedMonth);
     this.setState({
-      selectedDate: newCurrentDate,
-      month: extractMonthFromDate(newCurrentDate),
-      year: newCurrentDate.getFullYear(),
+      selectedDate: newSelectedDate,
+      month: extractMonthFromDate(newSelectedDate),
+      year: newSelectedDate.getFullYear(),
       monthPickerError: false,
-      remainingMonths: calculateRemainingMonths(new Date(), newCurrentDate),
+      remainingMonths: calculateRemainingMonths(new Date(), newSelectedDate),
     });
   };
 
-  handleAmountChange = (event, maskedvalue, floatvalue) => {
+  handleAmountChange = (floatvalue) => {
     this.setState({ totalAmount: floatvalue });
   };
 
