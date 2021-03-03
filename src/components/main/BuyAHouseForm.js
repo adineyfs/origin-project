@@ -25,17 +25,6 @@ class BuyAHouseForm extends Component {
     event.preventDefault();
   };
 
-  calculateRemainingMonths = () => {
-    let currentDate = new Date();
-    const currentDateYear = currentDate.getFullYear();
-    const currentDateMonth = currentDate.getMonth();
-    const selectedDateYear = this.state.selectedDate.getFullYear();
-    const selectedDateMonth = this.state.selectedDate.getMonth();
-    const yearsDifference = selectedDateYear - currentDateYear;
-    const monthsDifference = selectedDateMonth - currentDateMonth;
-    return yearsDifference * 12 + monthsDifference;
-  };
-
   handleBackClick = () => {
     const DECEMBER = 11;
     const JANUARY = 0;
